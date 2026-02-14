@@ -30,3 +30,13 @@ Run (example):
 ```bash
 ansible -i ansible/inventory.ini webservers -m ping
 ansible-playbook -i ansible/inventory.ini ansible/site.yml
+
+##How to Reproduce
+Create VPC/subnets/route tables
+Create SGs (Bastion, ALB, Web)
+Launch instances
+Run Ansible playbook
+Create target group + ALB
+
+## Write-up
+- Medium/Hashnode: https://medium.com/@jaymacsberg/secure-web-application-deployment-on-aws-using-ansible-and-application-load-balancer-888fc41c2570https://medium.com/@jaymacsberg/secure-web-application-deployment-on-aws-using-ansible-and-application-load-balancer-888fc41c2570
