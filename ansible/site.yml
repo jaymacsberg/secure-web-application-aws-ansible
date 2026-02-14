@@ -1,0 +1,52 @@
+- name: Deploy NGINX and HTML page on private web servers
+  hosts: webservers
+  become: true
+
+  vars:
+    your_name: "Joshua Bolade"
+    about_me: "Junior Cloud Engineer deploying a secure web app using AWS, Ansible, and an ALB."
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+
+    - name: Ensure nginx is enabled and running
+      ansible.builtin.systemd:
+        name: nginx
+        enabled: true
+        state: started
+
+    - name: Deploy index.html (unique per instance)
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: "0644"
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8" />
+            <title>AltSchool Cloud Exam</title>
+          </head>
+          <body style="font-family: Arial, sans-serif;">
+            <h1>AltSchool Cloud Engineering Project</h1>
+            <h2>{{ your_name }}</h2>
+            <p><strong>Hostname:</strong> {{ ansible_hostname }}</p>
+            <p><strong>Private IP:</strong> {{ ansible_default_ipv4.address }}</p>
+            <h3>About Me</h3>
+            <p>{{ about_me }}</p>
+          </body>
+          </html>
+
+    - name: Restart nginx
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted

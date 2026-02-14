@@ -1,0 +1,11 @@
+- name: Bootstrap Python deps for Ansible on Ubuntu
+  hosts: webservers
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.raw: sudo apt-get update -y
+
+    - name: Install python deps required by Ansible modules
+      ansible.builtin.raw: sudo apt-get install -y python3-apt python3-six
