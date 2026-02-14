@@ -41,4 +41,4 @@ ansible-playbook -i ansible/inventory.ini ansible/site.yml
 
 
 ## Write-up
-- Medium/Hashnode: https://medium.com/@jaymacsberg/secure-web-application-deployment-on-aws-using-ansible-and-application-load-balancer-888fc41c2570https://medium.com/@jaymacsberg/secure-web-application-deployment-on-aws-using-ansible-and-application-load-balancer-888fc41c2570
+- Medium/Hashnode: https://medium.com/@jaymacsberg/secure-web-application-deployment-on-aws-using-ansible-and-application-load-balancer-888fc41c2570
