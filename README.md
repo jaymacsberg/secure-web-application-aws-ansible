@@ -1,5 +1,11 @@
 # Secure Web Application Deployment on AWS using Ansible & ALB
 
+Secure access via Bastion (no public IPs on web servers)
+
+Automated NGINX + HTML deploy via Ansible
+
+High availability via ALB across 2 public subnets (2 AZs)
+
 ## Overview
 This project demonstrates a secure, highly available web application deployment on AWS using:
 - EC2 (Bastion + 2 private web servers)
